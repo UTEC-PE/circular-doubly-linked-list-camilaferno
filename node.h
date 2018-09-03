@@ -11,8 +11,16 @@ struct Node {
     Node* next;
     Node* prev;
 
-    void killSelf();
-    void print_next();
+    void killSelf(){
+      if(next){
+        next -> killSelf();
+      }
+      delete this;
+    };
+
+    //No se hace
+    void print_next(){
+    };
 };
 
 #endif
