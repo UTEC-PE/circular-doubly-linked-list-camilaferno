@@ -9,34 +9,10 @@ using namespace std;
 
 int main(){
 
-  List<int>* numbers= new List<int>;
-  numbers -> push_front(5);
-  //numbers -> push_back(3);
-  //numbers -> push_back(8);
-  //numbers -> push_back(2);
-  numbers -> pop_front();
-  //numbers -> pop_back();
-  //numbers -> clear();
+  List<int> test;
 
-  //imprimir causa segmentation fault cuando esta vacia
-  cout << "Imprime normal: ";
-  Iterator<int> iter= numbers -> begin();
-  for (int i=0; i<numbers -> size(); i++){//print normal
-    cout << *iter << ",";
-    ++iter;
-  }
-  iter= numbers -> end();
-  cout << endl;
-  cout << "Imprime alrevez: ";
-  for (int i=0; i<numbers -> size(); i++){//print reverse
-    cout << *iter << ",";
-    --iter;
-  }
-  cout << endl;
-
-  cout << numbers -> empty();
-
-
+  test.push_back(1);
+  test.pop_front();
 
   return 0;
 }

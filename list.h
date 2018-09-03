@@ -6,7 +6,6 @@
 #include "iterator.h"
 
 using namespace std;
-//start -> prev, me deja referirme a la cosa
 
 template <typename T>
 class List {
@@ -18,11 +17,17 @@ class List {
         List() : start(nullptr), nodes(0) {};//Constructor
 
         T front(){
-              return start -> data;
+          if(start==nullptr){throw "Lista Vacia";}
+          else{
+            return start -> data;
+          }
         };
 
         T back(){
-          return start -> prev -> data;
+          if(start==nullptr){throw "Lista Vacia";}
+          else{
+            return start -> prev -> data;
+          }
         };
 
         void push_front(T value){
@@ -36,7 +41,7 @@ class List {
           }
           else{
             tmp -> prev = start -> prev;
-            start -> prev -> next = tmp; //start -> prev coje el ultimo nodo
+            start -> prev -> next = tmp;
             start -> prev = tmp;
             tmp -> next = start;
             start = tmp;
@@ -56,7 +61,7 @@ class List {
           }
           else{
             tmp -> prev = start -> prev;
-            start -> prev -> next = tmp; //start -> prev coje el ultimo nodo
+            start -> prev -> next = tmp;
             start -> prev = tmp;
             tmp -> next = start;
             nodes +=1;
@@ -68,7 +73,7 @@ class List {
             throw "Empty list";
           }
           else{
-            if(!start -> next){
+            if(nodes==1){
               start=nullptr;
               delete start;
             }
@@ -80,8 +85,8 @@ class List {
               start -> next = nullptr;
               delete start;
               start = tmp;
-              nodes--;
             }
+            nodes--;
           }
         };
 
@@ -102,13 +107,13 @@ class List {
               tmp -> next = nullptr;
               tmp -> prev = nullptr;
               delete tmp;
-              nodes--;
             }
+            nodes--;
           }
         };
 
         T get(int position){
-          if(start==nullptr || position < 0){ //si te piden la posicion 6 de una lista con 3 nodos te va a dar el start pq es circular
+          if(start==nullptr || position < 0){ //si te piden la posicion 5 de una lista con 3 nodos te va a dar el start pq es circular
             throw "Wrong position or empty list";
           }
           else{
@@ -123,7 +128,7 @@ class List {
         void concat(List<T> &other);
 
         bool empty(){
-          return start;
+          return !start;
         };
 
         int size(){
