@@ -125,7 +125,13 @@ class List {
           }
         };
 
-        void concat(List<T> &other);
+        void concat(List<T> &other){
+          Node<T>* tmp = other.start;
+          for (int i=0; i<other.size(); i++){
+            this->push_back(tmp->data);
+            tmp = tmp ->next;
+          }
+        };
 
         bool empty(){
           return !start;
