@@ -118,7 +118,7 @@ class List {
           }
           else{
             Node<T>* tmp = start;
-            for(int i=0; i<position; i++){
+            for(int i=0; i<position; i++){ // Podrías usar módulo, pero está bien
               tmp = tmp -> next;
             }
             return tmp -> data;
@@ -146,11 +146,11 @@ class List {
         };
 
         Iterator<T> begin(){
-          Iterator<T>* itera = new Iterator<T>(start);
+          Iterator<T>* itera = new Iterator<T>(start); // No es necesario crear un puntero
           return *itera;
         };
         Iterator<T> end(){
-          Iterator<T>* itera = new Iterator<T>(start->prev);
+          Iterator<T>* itera = new Iterator<T>(start->prev); // No es necesario crear un puntero
           return *itera;
         };
 
